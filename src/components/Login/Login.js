@@ -7,25 +7,23 @@ import Button from "../UI/Button/Button";
 //reducer function 可以寫在 component 之外，因為他與組建內的東西無關
 //而任何在 reducer function 內的值可以被 React 自動帶入
 const emailReducer = (state, action) => {
-  if(action.type==="USER_INPUT"){
-    return { value: action.val, isValid: action.val.includes('@') }
+  if (action.type === "USER_INPUT") {
+    return { value: action.val, isValid: action.val.includes("@") };
   }
-  if(action.type==="INPUT_BLUR"){
-    return { value: state.value, isValid: state.value.includes('@') }
+  if (action.type === "INPUT_BLUR") {
+    return { value: state.value, isValid: state.value.includes("@") };
   }
-  return { value:'', isValid:false }
-}
-const passwordReducer = (state, aciton) =>{
-  if(aciton.type==='USER_PSW')
-  {
-    return {value: aciton.val, isValid: aciton.val.trim().length > 6}
+  return { value: "", isValid: false };
+};
+const passwordReducer = (state, aciton) => {
+  if (aciton.type === "USER_PSW") {
+    return { value: aciton.val, isValid: aciton.val.trim().length > 6 };
   }
-  if(aciton.type==='USER_BLUR_PSW')
-  {
-    return {value: state.value, isValid: state.value.trim().length > 6}
+  if (aciton.type === "USER_BLUR_PSW") {
+    return { value: state.value, isValid: state.value.trim().length > 6 };
   }
-  return {value:'', isValid: false}
-}
+  return { value: "", isValid: false };
+};
 const Login = (props) => {
   // const [enteredEmail, setEnteredEmail] = useState("");
   // const [emailIsValid, setEmailIsValid] = useState();
@@ -33,54 +31,51 @@ const Login = (props) => {
   // const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const[emailState, dispatchEmail] = useReducer(emailReducer, {
-    value: '',
-    isValid: undefined
-  })
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
+    value: "",
+    isValid: undefined,
+  });
 
-  const [ passwordState, dispatchPassword ] =useReducer(passwordReducer,
-    {value:'',
-    isValid: undefined
-   }
-    )
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
+    value: "",
+    isValid: undefined,
+  });
 
-  // useEffect(() => {
-    
-  //   const identifier = setTimeout(()=>{ 
-  //     console.log("validate form");
-  //     emailState.isValid(emailState.value.includes("@") && enteredPassword.trim().length > 6
-  //   );
-  // },500);
-  //  return ()=>{
-  //    console.log("CLEAN UP");
-  //    clearTimeout(identifier);
-  //  }
-  // }, [enteredEmail, enteredPassword]);
+  const { isValid: emailIsValid } = emailState;
+  const { isValid: passwordIsValid } = passwordState;
+  useEffect(() => {
+    const identifier = setTimeout(() => {
+      console.log("validate form");
+      setFormIsValid(emailIsValid && passwordIsValid);
+    }, 500);
+    return () => {
+      console.log("CLEAN UP");
+      clearTimeout(identifier);
+    };
+  }, [emailIsValid, passwordIsValid]);
 
   const emailChangeHandler = (event) => {
-    dispatchEmail({type:'USER_INPUT', val: event.target.value})
+    dispatchEmail({ type: "USER_INPUT", val: event.target.value });
 
-    setFormIsValid(
-      event.target.value.includes('@')  && passwordState.isValid
-    );
+    // setFormIsValid(
+    //   event.target.value.includes('@')  && passwordState.isValid
+    // );
   };
 
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(passwordState.value);
-    dispatchPassword({type: 'USER_PSW', val: event.target.value})
+    dispatchPassword({ type: "USER_PSW", val: event.target.value });
 
-    setFormIsValid(
-      event.target.value.trim().length > 6 && emailState.isValid
-    );
+    setFormIsValid(event.target.value.trim().length > 6 && emailState.isValid);
   };
 
   const validateEmailHandler = () => {
-    dispatchEmail({type: 'INPUT_BLUR'})
+    dispatchEmail({ type: "INPUT_BLUR" });
   };
 
   const validatePasswordHandler = () => {
     // setPasswordIsValid(passwordState.value.trim().length > 6);
-    dispatchPassword({type:'USER_BLUR_PSW'})
+    dispatchPassword({ type: "USER_BLUR_PSW" });
   };
 
   const submitHandler = (event) => {
