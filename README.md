@@ -24,11 +24,10 @@
 
 
 
-<h2>
-useEffect
+<h3>useEffect</h3>
 useEffect(()=>{},[dependency])
 舉例
 1. 配合瀏覽器內建的 localStorage 讓使用者登入後保持登入狀態，不因重新整理而消失
 2. 每當使用者輸入帳號、密碼，每敲鍵盤的時候就去判斷是否包含＠、以及密碼長度
-</h2>
+
 
