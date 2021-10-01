@@ -26,8 +26,19 @@
 
 <h3>useEffect</h3>
 useEffect(()=>{},[dependency])
-舉例
-1. 配合瀏覽器內建的 localStorage 讓使用者登入後保持登入狀態，不因重新整理而消失
-2. 每當使用者輸入帳號、密碼，每敲鍵盤的時候就去判斷是否包含＠、以及密碼長度
+舉例<br>
+1. 配合瀏覽器內建的 localStorage 讓使用者登入後保持登入狀態，不因重新整理而消失<br>
+2. 每當使用者輸入帳號、密碼，每敲鍵盤的時候就去判斷是否包含＠、以及密碼長度<br>
+
+<h3>useReducer</h3>
+const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
+會另有 function myReducerFunction(state, action){依據不同action來return new state}
+<ul>
+  <li>reducer</li>  就是個 function, 接受 state & action, 並回傳一個新的 state<br>
+  <li>action</li>   可說是一個obj, 描述state的變化<br>
+  <li>useReducer</li> 一個 React 的 hook,用來處理 useState 做不到的較為複雜的狀態管理<br>
+  <li>dispatch</li> 一個被我們用 useReducer 回傳的 function, 他傳遞 action 物件給 reducer function (即myReducerFunction)
+<ul>
+
 
 
