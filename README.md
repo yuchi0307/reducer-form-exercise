@@ -11,7 +11,8 @@
 
 <h2>side-effect</h2>
 
-
+<h3>useEffect</h3>
+useEffect(()=>{},[dependency])
 在 React 中，只有呈現 UI 是最重要的，其他表面看不到的都算副作用！
 主要作用：
 
@@ -20,16 +21,17 @@
 3. React to user's events & inputs
 4. Re-evaluate component upon state & props change
 
-副作用則例如： 發送 http request、store data in browser
-
-
-
-<h3>useEffect</h3>
-useEffect(()=>{},[dependency])
+副作用：
+<ul>
+<li>Data Fetching 獲取api資料</il>
+<li>Setting up a subscription 事件監聽或訂閱</il>
+<li>Changing the DOM 改變DDOM</il>
+<li>Logging 輸出日誌(?)</il>
+</ul>
 舉例<br>
 1. 配合瀏覽器內建的 localStorage 讓使用者登入後保持登入狀態，不因重新整理而消失<br>
 2. 每當使用者輸入帳號、密碼，每敲鍵盤的時候就去判斷是否包含＠、以及密碼長度<br>
-
+<a href='https://www.ruanyifeng.com/blog/2020/09/react-hooks-useeffect-tutorial.html'>轻松学会 React 钩子：以 useEffect() 为例</a>
 <h3>useReducer</h3>
 const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
 會另有 function myReducerFunction(state, action){依據不同action來return new state}
