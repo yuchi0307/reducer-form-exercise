@@ -42,7 +42,10 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
    <li>dispatch</li> 一個被我們用 useReducer 回傳的 function, 他傳遞 action 物件給 reducer function (手槍)
   <li>useReducer</li> 一個 React 的 hook,用來處理 useState 做不到的較為複雜的狀態管理<br>
 <ul>
-<br/>  
-  <a href='https://frontend.turing.edu/lessons/module-3/advanced-react-hooks.html'>參考資料 Advanced React - useContext and useReducer hooks</a>
-
+<br/>
+<a href='https://frontend.turing.edu/lessons/module-3/advanced-react-hooks.html'>參考資料 Advanced React - useContext and useReducer hooks</a>
+  
+<h3>useContext</h3>
+<br>
+省略prop，將資料一次傳遞給多個子層。但不適合用在密切改變狀態的情況！
 
