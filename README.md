@@ -41,7 +41,7 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
   <li>action</li>   可說是一個obj, 被 dispatch 丟回 reducer function 並改變 state 的物件(子彈)<br>
    <li>dispatch</li> 一個被我們用 useReducer 回傳的 function, 他傳遞 action 物件給 reducer function (手槍)
   <li>useReducer</li> 一個 React 的 hook,用來處理 useState 做不到的較為複雜的狀態管理<br>
-<ul>
+</ul>
 <br/>
 <a href='https://frontend.turing.edu/lessons/module-3/advanced-react-hooks.html'>參考資料 Advanced React - useContext and useReducer hooks</a>
   
