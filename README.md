@@ -68,5 +68,9 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
   <li>與第三方 DOM 函式庫整合。</li>
 </ul>  
   <a href="https://dev.to/sajithpradeep/understanding-the-use-of-useeffect-hook-forwardref-in-react-57jf"></a>  
-  
+<br>
+<h3>forwardRef </h3><br>
+有些時候父層的元件希望能夠取得子層的 DOM 元素（例如，button 或 input），以便能夠在父層控制子層 DOM 元素的 focus, selection 或 animation 的效果。這時就可以使用 Ref forwarding 來讓父層取得子層 DOM 元素，以便控制和操作它。<br>
+在父層元件建立 ref,在子層使用 forwardRef<br>
+<a href="https://pjchender.blogspot.com/2021/03/react-dom-forwardref.html">[React] 讓父層可以取得子層的DOM 元素：ForwardRef 的使用</a>
 
