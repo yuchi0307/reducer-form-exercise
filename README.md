@@ -54,7 +54,13 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
   useEffect(() => {
     userNameRef.current.focus();
   }, []); 使得畫面一開始渲染就focus在userName輸入欄位<br>
-  並且將要return的輸入欄位component寫下 < Input ref = {userNameRef}>
+  並且將要return的輸入欄位component作為一個屬性如下: <br>
+  < Input 
+  type="text"
+  name="username" 
+  ref = {userNameRef}
+  onKeyDown = {e =>handleKeyPress(e, "username")}
+  />
   <br>
 <ul>
   <li>管理 focus、選擇文字、或影音播放。</li>
