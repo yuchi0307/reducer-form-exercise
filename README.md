@@ -12,7 +12,11 @@
 <h2>side-effect</h2>
 
 <h3>useEffect</h3>
+
+```
 useEffect(()=>{},[dependency])
+```
+
 在 React 中，只有呈現 UI 是最重要的，其他表面看不到的都算副作用！<br>
 主要作用：
 <ul>
@@ -34,7 +38,11 @@ useEffect(()=>{},[dependency])
 <a href='https://www.ruanyifeng.com/blog/2020/09/react-hooks-useeffect-tutorial.html'>轻松学会 React 钩子：以 useEffect() 为例</a>
 <h3>useReducer</h3>
 <p> Reducer is just a function responsible for managing changes to state. It decides how update state based on what kinds of actions are dispatched to it.</p><br>
-const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
+
+```
+const [data, dispatch] = useReducer( myReducerFunction, initialState) 
+```
+
 會另有 function myReducerFunction(state, action){依據不同action來return new state}
 <ul>
   <li>reducer</li>  就是個 function, 接受 state & action, 並回傳一個新的 state<br>
@@ -46,10 +54,42 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
 <a href='https://frontend.turing.edu/lessons/module-3/advanced-react-hooks.html'>參考資料 Advanced React - useContext and useReducer hooks</a>
   
 <h3>useContext</h3><br>
-省略prop，將資料一次傳遞給多個子層。但不適合用在密切改變狀態的情況！
-  
+省略prop，將資料一次傳遞給多個子層。但不適合用在密切改變狀態的情況！<br/>
+一個 React app 中可以有多個 React context。每個 React context 的本體都是一個物件（在這邊把它稱為 context object）。<br/>
+其中 context obj 中又會有兩個很重要的屬性：<br/>
+<ul>
+  <li>Provider（提供者）</li>
+  <li>Consumer（消費者）</li>
+</ul>  
+<br/>
+
+```
+const CartContext = React.createContext({ 
+  items: [],
+  totalAmount: 0,
+  addItem: (item) => {},
+  removeItem: (id) =>{}
+})
+
+export default CartContext;
+
+```
+
+
+```
+//在另一個component中:
+return(
+    <CartContext.Provider value={cartContext}>
+    {props.children}
+    </CartContext.Provider>
+    )
+
+```
+
 <h3>useRef</h3><br>
-  const userNameRef = useRef(null);<br>
+
+```
+  const userNameRef = useRef(null);
   <br>
   useEffect(() => {
     userNameRef.current.focus();
@@ -61,7 +101,8 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
   ref = {userNameRef}
   onKeyDown = {e =>handleKeyPress(e, "username")}
   />
-  <br>
+```
+
 <ul>
   <li>管理 focus、選擇文字、或影音播放。</li>
   <li>觸發即時的動畫。</li>
@@ -71,7 +112,10 @@ const [data, dispatch] = useReducer( myReducerFunction, initialState) <br>
 <br>
 <h3>forwardRef </h3>
 <br>
-//父層<br>
+
+```
+//父層
+
 const App =()=>{
   const coolInputRef = React.useRef(null);
   
@@ -81,7 +125,8 @@ const App =()=>{
   
  <coolInput ref={coolInputRef}/>
 }
-<br>
+```
+```
 //子層<br>
 
 const coolInput =React.forwardRef((props, ref)) =>{
@@ -89,7 +134,8 @@ const coolInput =React.forwardRef((props, ref)) =>{
     <input type="text" ref={ref} />
   )
 }
-<br>或者<br>
+```
+```
 //子層
 
 const CoolInput = (props, ref) =>{
@@ -99,6 +145,7 @@ const CoolInput = (props, ref) =>{
 const forwardedRef = React.forwardRef(CoolInput)
 
 export default forwardedRef;
+```
 <br>
 有些時候父層的元件希望能夠取得子層的 DOM 元素（例如，button 或 input），以便能夠在父層控制子層 DOM 元素的 focus, selection 或 animation 的效果。這時就可以使用 Ref forwarding 來讓父層取得子層 DOM 元素，以便控制和操作它。<br>
 tips: 在父層元件建立 ref,在子層使用 forwardRef<br>
