@@ -104,10 +104,10 @@ export default HeaderCartButton;
 <a href="https://ithelp.ithome.com.tw/articles/10252519">I Want To Know React - Context 語法</a>
 <br>
 <h3>useRef</h3></br>
-const userNameRef = useRef(null);
-</br>
+想對input欄位抓取value、使用focus()這些方法,都要直接對實體DOM做操作,但react本身就是virtual DOM,於是react提出Refs概念,使用這個方法我們就可以抓取到react裡面的DOM元素</br>
 
-```  
+``` 
+ const userNameRef = useRef(null);
   useEffect(() => {
     userNameRef.current.focus();
   }, []); 
