@@ -102,16 +102,17 @@ export default HeaderCartButton;
 ```
 
 <a href="https://ithelp.ithome.com.tw/articles/10252519">I Want To Know React - Context 語法</a>
-
-
-<h3>useRef</h3><br>
-const userNameRef = useRef(null);
 <br>
+<h3>useRef</h3></br>
+const userNameRef = useRef(null);
+</br>
+
 ```  
   useEffect(() => {
     userNameRef.current.focus();
-  }, []); 使得畫面一開始渲染就focus在userName輸入欄位<br>
-  並且將要return的輸入欄位component作為一個屬性如下: <br>
+  }, []); 
+  使得畫面一開始渲染就focus在userName輸入欄位
+  並且將要return的輸入欄位component作為一個屬性如下: 
   < Input 
   type="text"
   name="username" 
