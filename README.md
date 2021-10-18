@@ -103,11 +103,11 @@ export default HeaderCartButton;
 
 <a href="https://ithelp.ithome.com.tw/articles/10252519">I Want To Know React - Context 語法</a>
 
-<h3>useRef</h3><br>
 
-```
-  const userNameRef = useRef(null);
-  <br>
+<h3>useRef</h3><br>
+const userNameRef = useRef(null);
+<br>
+```  
   useEffect(() => {
     userNameRef.current.focus();
   }, []); 使得畫面一開始渲染就focus在userName輸入欄位<br>
